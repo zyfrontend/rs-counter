@@ -24,6 +24,7 @@ async fn main() {
     let pool = db::establish_connection().await;
 
     let app = Router::new()
+        .route("/", get(|| async { "Hello, World!" }))
         .route("/api/wx_counter/login", post(api::user::login))
         .route("/api/wx_counter/counters", get(api::counter::list))
         .route("/api/wx_counter/counters", post(api::counter::add))
